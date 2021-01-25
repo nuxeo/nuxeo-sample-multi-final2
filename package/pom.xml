@@ -11,7 +11,7 @@
 
   <artifactId>nuxeo-sample-final2-package</artifactId>
   <packaging>zip</packaging>
-  <name>Nuxeo sample package - Final 1 package (without vertical)</name>
+  <name>Nuxeo sample package - Final 2 package (with vertical)</name>
 
   <dependencies>
     <!-- Base distribution(s) for the MP -->
@@ -20,6 +20,16 @@
       <artifactId>nuxeo-nxr-server</artifactId>
       <type>zip</type>
       <scope>provided</scope>
+    </dependency>
+
+    <!-- Additional bundles to be deployed by the MP -->
+    <dependency>
+      <groupId>nuxeo-studio</groupId>
+      <artifactId>nuxeo-vertical-test</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>nuxeo-studio</groupId>
+      <artifactId>nuxeo-final2-test-projec</artifactId>
     </dependency>
   </dependencies>
 

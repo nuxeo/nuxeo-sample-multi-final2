@@ -23,7 +23,6 @@
         <filter token="VERSION" value="${maven.project.version}" />
         <filter token="NUXEO_TARGET_PLATFORM" value="${nuxeo.distribution.name}-${nuxeo.target.version}.*" />
         <filter token="SAMPLE_COMMON_PACKAGE_VERSION" value="${sample.common.package.version}" />
-        <filter token="STUDIO_PROJECT_VERSION" value="${studio.project.version}" />
       </filterset>
     </copy>
 
