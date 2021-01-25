@@ -9,7 +9,7 @@ projects).
 
 The "final2" project relies on both "common" and "vertical" projects.
 
-Its package embeds/holds all dependencies needed for installation so it does not declare the common or vertical package
+Its package embeds/holds both vertical and common Studio projects, so it does not declare the vertical package
 as dependencies.
 
 Note that the corresponding common and vertical packages are needed to be referenced in the studio project application

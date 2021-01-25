@@ -18,7 +18,7 @@
   <properties>
     <nuxeo.target.version>2021</nuxeo.target.version>
     <sample.common.package.version>2.0</sample.common.package.version>
-    <sample.vertical.package.version>1.0.0</sample.vertical.package.version>
+    <studio.vertical.project.version>0.0.0-SNAPSHOT</studio.vertical.project.version>
     <studio.project.version>0.0.0-SNAPSHOT</studio.project.version>
     <nuxeo.skip.enforcer>true</nuxeo.skip.enforcer>
   </properties>
@@ -40,9 +40,9 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.nuxeo.sample</groupId>
-        <artifactId>nuxeo-sample-common-core</artifactId>
-        <version>${sample.common.core.version}</version>
+        <groupId>nuxeo-studio</groupId>
+        <artifactId>nuxeo-vertical-test</artifactId>
+        <version>${studio.vertical.project.version}</version>
       </dependency>
       <dependency>
         <groupId>nuxeo-studio</groupId>

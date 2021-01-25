@@ -102,6 +102,8 @@ pipeline {
     string(name: 'NEXT_VERSION', defaultValue: '', description: 'Next version (next minor version if unset)')
     string(name: 'STUDIO_PROJECT_VERSION', defaultValue: '', description: 'Version of the Studio project dependency (unchanged if unset). Use keywords `MAJOR`, `MINOR` or `PATCH` for a release to be performed automatically')
     string(name: 'NEXT_STUDIO_PROJECT_VERSION', defaultValue: '', description: 'Next version of the Studio project version dependency (unchanged if unset)')
+    string(name: 'VERTICAL_STUDIO_PROJECT_VERSION', defaultValue: '', description: 'Version of the Vertical Studio project dependency (unchanged if unset)')
+    string(name: 'NEXT_VERTICAL_STUDIO_PROJECT_VERSION', defaultValue: '', description: 'Next version of the Vertical Studio project version dependency (unchanged if unset)')
     string(name: 'COMMON_VERSION', defaultValue: '', description: 'Version of the Common Sample package dependency (unchanged if unset)')
     string(name: 'NEXT_COMMON_VERSION', defaultValue: '', description: 'Next version of the Common Sample package dependency (unchanged if unset)')
     string(name: 'NUXEO_VERSION', defaultValue: '', description: 'Version of the Nuxeo Server dependency (unchanged if unset)')
@@ -135,29 +137,32 @@ pipeline {
         script {
           echo """
           ----------------------------------------
-          Branch name:                '${BRANCH_NAME}'
+          Branch name:                  '${BRANCH_NAME}'
 
-          Current version:            '${CURRENT_VERSION}'
-          Release version:            '${RELEASE_VERSION}'
-          Next version:               '${params.NEXT_VERSION}'
+          Current version:              '${CURRENT_VERSION}'
+          Release version:              '${RELEASE_VERSION}'
+          Next version:                 '${params.NEXT_VERSION}'
 
-          Studio project version:     '${params.STUDIO_PROJECT_VERSION}'
-          Next Studio project version:'${params.NEXT_STUDIO_PROJECT_VERSION}'
+          Studio project version:       '${params.STUDIO_PROJECT_VERSION}'
+          Next Studio project version:  '${params.NEXT_STUDIO_PROJECT_VERSION}'
 
-          Common package version:     '${params.COMMON_VERSION}'
-          Next Common package version:'${params.NEXT_COMMON_VERSION}'
+          Vertical Studio version:      '${params.COMMON_VERSION}'
+          Next Vertical Studio version: '${params.NEXT_COMMON_VERSION}'
 
-          Nuxeo version:              '${params.NUXEO_VERSION}'
-          Nuxeo image version:        '${NUXEO_IMAGE_VERSION}'
-          Nuxeo version is promoted?  '${params.NUXEO_VERSION_IS_PROMOTED}'
-          Next Nuxeo version:         '${params.NEXT_NUXEO_VERSION}'
+          Common package version:       '${params.COMMON_VERSION}'
+          Next Common package version:  '${params.NEXT_COMMON_VERSION}'
 
-          Jira issue:                 '${params.JIRA_ISSUE}'
+          Nuxeo version:                '${params.NUXEO_VERSION}'
+          Nuxeo image version:          '${NUXEO_IMAGE_VERSION}'
+          Nuxeo version is promoted?    '${params.NUXEO_VERSION_IS_PROMOTED}'
+          Next Nuxeo version:           '${params.NEXT_NUXEO_VERSION}'
 
-          Skip tests:                 '${params.SKIP_TESTS}'
-          Skip functional tests:      '${params.SKIP_FUNCTIONAL_TESTS}'
+          Jira issue:                   '${params.JIRA_ISSUE}'
 
-          Dry run:                    '${params.DRY_RUN}'
+          Skip tests:                   '${params.SKIP_TESTS}'
+          Skip functional tests:        '${params.SKIP_FUNCTIONAL_TESTS}'
+
+          Dry run:                      '${params.DRY_RUN}'
           ----------------------------------------
           """
           if (!params.NUXEO_VERSION_IS_PROMOTED && !RELEASE_VERSION.contains('RC')) {
@@ -212,6 +217,9 @@ pipeline {
             }
             if (!params.COMMON_VERSION.isEmpty()) {
               replacePomProperty('sample.common.package.version', params.COMMON_VERSION)
+            }
+            if (!params.VERTICAL_STUDIO_PROJECT_VERSION.isEmpty()) {
+              replacePomProperty('studio.vertical.project.version', params.VERTICAL_STUDIO_PROJECT_VERSION)
             }
             def studioVersion = "${params.STUDIO_PROJECT_VERSION}".trim()
             if (!studioVersion.isEmpty()) {
@@ -412,6 +420,10 @@ pipeline {
             def nextCommonVersion = "${params.NEXT_COMMON_VERSION}"
             if (!nextCommonVersion.isEmpty()) {
               replacePomProperty('sample.common.package.version', nextCommonVersion)
+            }
+            def nextVerticalStudioVersion = "${params.NEXT_VERTICAL_STUDIO_PROJECT_VERSION}"
+            if (!nextVerticalStudioVersion.isEmpty()) {
+              replacePomProperty('studio.vertical.project.version', nextVerticalStudioVersion)
             }
             def nextStudioVersion = "${params.NEXT_STUDIO_PROJECT_VERSION}"
             if (!nextStudioVersion.isEmpty()) {
