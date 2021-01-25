@@ -10,7 +10,7 @@
 
   <groupId>org.nuxeo.sample</groupId>
   <artifactId>nuxeo-sample-final2-parent</artifactId>
-  <version>40.0</version>
+  <version>40.1-SNAPSHOT</version>
   <name>Nuxeo sample final parent</name>
   <description />
   <packaging>pom</packaging>
@@ -18,8 +18,8 @@
   <properties>
     <nuxeo.target.version>2021</nuxeo.target.version>
     <sample.common.package.version>2.4</sample.common.package.version>
-    <studio.vertical.project.version>1.1.1</studio.vertical.project.version>
-    <studio.project.version>1.0.2</studio.project.version>
+    <studio.vertical.project.version>0.0.0-SNAPSHOT</studio.vertical.project.version>
+    <studio.project.version>0.0.0-SNAPSHOT</studio.project.version>
     <nuxeo.skip.enforcer>true</nuxeo.skip.enforcer>
   </properties>
 
