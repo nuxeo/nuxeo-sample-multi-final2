@@ -17,8 +17,9 @@
   <license-url />
   <visibility>DEV</visibility>
   <dependencies>
-    <!-- no dependencies except web-ui and common: other deps embedded in the package for this sample -->
     <package>nuxeo-web-ui</package>
+    <package>google-storage</package>
+    <!-- no dependency to custom projects other than common: other deps embedded in the package for this sample -->
     <package>nuxeo-sample-common-package:@SAMPLE_COMMON_PACKAGE_VERSION@</package>
   </dependencies>
 </package>
